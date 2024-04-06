@@ -6,6 +6,7 @@ function Webcam() {
     const [streaming, setStreaming] = useState(false);
     //const [stream, setStream] = useState<MediaStream>();
     const [firstImg, setFirstImg] = useState(true);
+    const [error, setError] = useState(false)
     //const [size, setSize] = useState([0, 0]);
     //const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -93,6 +94,7 @@ function Webcam() {
                     async function processVideo() {
                         console.log("Into Process Video")
                         try {
+                            setError(false)
                             let begin = Date.now();
                             // start processing.
                             cap.read(src);
@@ -170,6 +172,7 @@ function Webcam() {
                             //cv.imshow("canvasOutput", dst);
                             
                         } catch (err) {
+                            setError(true)
                             console.log(err);
                         }
                     };
@@ -180,6 +183,7 @@ function Webcam() {
           }
         })
         .catch(function(err) {
+          setError(true)
           console.log(err.name + ": " + err.message);
         }); // always check for errors at the end.
 
@@ -204,6 +208,7 @@ function Webcam() {
                             <div style={{width: "70%", height: "50%", overflow: "scroll", display: "flex", justifyContent: "center"}}>
                             <video autoPlay={true} id="videoElement" controls width={306} height={277} webkit-playsinline playsInline/*width={"70%"} height={"50%"}*/></video>
                             </div>
+                            {error ? <h1 className="subHeader">Webcam Access Denied. Please Allow Webcam Access.</h1> : null}
                             <button onClick={()=>{setStreaming(false)}}>Stop Webcam</button>
                         </div> : 
                         <div className = "input">

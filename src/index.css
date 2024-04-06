@@ -40,6 +40,10 @@ h1 {
   white-space: nowrap;*/
   font-size: 3.2vw;
 }
+.subHeader {
+  font-size: 1.5vw;
+  color: red;
+}
 #Title {
   margin: 0;
   position: absolute;
