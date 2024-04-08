@@ -208,7 +208,7 @@ function Webcam() {
                             <div style={{width: "70%", height: "50%", overflow: "scroll", display: "flex", justifyContent: "center"}}>
                             <video autoPlay={true} id="videoElement" controls width={306} height={277} webkit-playsinline playsInline/*width={"70%"} height={"50%"}*/></video>
                             </div>
-                            {error ? <h1 className="subHeader">Webcam Access Denied. Please Allow Webcam Access.</h1> : null}
+                            {error ? <h1 className="subHeader">Webcam Access Denied. Please Allow Webcam Access. If permissions are turned on and video does not show, return to home page and refresh.</h1> : null}
                             <button onClick={()=>{setStreaming(false)}}>Stop Webcam</button>
                         </div> : 
                         <div className = "input">
